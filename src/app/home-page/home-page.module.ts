@@ -7,6 +7,8 @@ import { SnippetAdderComponent } from './snippet-adder/snippet-adder.component';
 import { SnippetCardComponent } from './snippet-card/snippet-card.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
+import { SnippetManagerService } from './services/snippet-manager.service';
+import { LanguageManagerService } from './services/language-manager.service';
 
 @NgModule({
   imports: [
@@ -23,6 +25,10 @@ import { FormsModule } from '@angular/forms';
   ],
   exports: [
     HomePageControllerComponent
+  ],
+  providers: [
+    SnippetManagerService,
+    LanguageManagerService
   ]
 })
 export class HomePageModule { }
