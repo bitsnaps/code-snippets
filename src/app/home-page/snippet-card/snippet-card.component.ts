@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Snippet } from '../models/snippet';
+import { HighlightJsService } from 'angular2-highlight-js';
 
 @Component({
   selector: 'app-snippet-card',
@@ -9,14 +10,16 @@ import { Snippet } from '../models/snippet';
 export class SnippetCardComponent implements OnInit {
 
   @Input() snippet: Snippet;
+  @ViewChild('codeSnippet') codeSnippet: ElementRef;
   showModal = false;
 
-  constructor() { }
+  constructor(private highlighter: HighlightJsService) { }
 
   ngOnInit() {
   }
 
   showDetails = () => {
+    this.highlighter.highlight(this.codeSnippet.nativeElement);
     this.showModal = true;
   }
 

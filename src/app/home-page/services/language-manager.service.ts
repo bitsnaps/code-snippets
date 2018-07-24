@@ -13,9 +13,9 @@ export class LanguageManagerService {
   fetchAllOptions = (): Observable<Set<Languages>> => {
     return Observable.create(observable => {
       const languages = new Set<Languages>();
-      for (const lang in languages){
+      for (const lang in Languages){
         if (lang){
-          languages.add(Languages[lang])
+          languages.add(Languages[lang] as Languages);
         }
       }
       observable.next(languages);
@@ -38,7 +38,7 @@ export class LanguageManagerService {
     });
   }
 
-  savedLanguage = (language: Languages): Observable<void> => {
+  saveLanguage = (language: Languages): Observable<void> => {
     return Observable.create(observable => {
       this.fetchSavedLanguagesAsArray().subscribe(res => {
         res.push(language);
@@ -53,13 +53,14 @@ export class LanguageManagerService {
 
   private fetchSavedLanguagesAsArray = (): Observable<Array<Languages>> => {
     return Observable.create(observable => {
-        let savedLanguages = JSON.parse(window.localStorage.getItem(this.LANGUAGE_STORAGE_KEY)) as Array<Languages>;
-        if (!savedLanguages){
-          savedLanguages = [];
-        }
-        observable.next(savedLanguages);
-    }
+      let savedLanguages = JSON.parse(window.localStorage.getItem(this.LANGUAGE_STORAGE_KEY)) as Array<Languages>;
+      if (!savedLanguages){
+        savedLanguages = [];
+      }
+      observable.next(savedLanguages);
+    });
   }
+
 
 }
 

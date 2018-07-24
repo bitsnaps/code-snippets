@@ -1,4 +1,4 @@
-import { Languages } from './temp-languages.enum';
+import { Languages } from '../services/language-manager.service';
 
 export class Snippet {
   private _title: string;

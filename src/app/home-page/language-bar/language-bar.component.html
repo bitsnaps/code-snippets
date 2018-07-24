@@ -5,7 +5,8 @@
 fxLayoutGap="1em" id="language-container">
 
   <h2 *ngIf="selectedLanguages.size === 0">Start By Choosing a Language</h2>
-  <h2 *ngFor="let lang of selectedLanguages">{{lang}}</h2>
+  <h2 *ngFor="let lang of selectedLanguages" (click)="updateSelectedLanguage(lang)"
+  [ngClass]="{'selected': lang === selectedLanguage}">{{lang}}</h2>
 
 </div>
 
@@ -25,7 +26,8 @@ fxLayoutGap="1em" id="language-container">
 </div>
 
 <div fxLayout="column" fxLayoutAlign="start space-evenly" fxLayoutGap="1em" class="language-container">
-  <h2 *ngFor="let lang of selectedLanguages">{{lang}}</h2>
+  <h2 *ngFor="let lang of selectedLanguages" (click)="updateSelectedLanguage(lang)"
+  [ngClass]="{'selected': lang === selectedLanguage}">{{lang}}</h2>
 </div>
 
 </nav>

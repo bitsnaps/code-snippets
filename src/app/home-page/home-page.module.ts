@@ -9,6 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { SnippetManagerService } from './services/snippet-manager.service';
 import { LanguageManagerService } from './services/language-manager.service';
+import { HighlightJsModule, HighlightJsService } from 'angular2-highlight-js';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { LanguageManagerService } from './services/language-manager.service';
   ],
   providers: [
     SnippetManagerService,
-    LanguageManagerService
+    LanguageManagerService,
+    HighlightJsService
   ]
 })
 export class HomePageModule { }
